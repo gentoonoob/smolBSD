@@ -50,7 +50,7 @@ LABEL smolbsd.buildcpus=4
 LABEL smolbsd.buildmem=8192
 LABEL revision="smol1"
 
-ARG MAKI_VERSION="0.5.6"
+ARG MAKI_VERSION="0.5.7"
 
 ENV NBUSER=maki
 ENV LANG=en_US.UTF-8
