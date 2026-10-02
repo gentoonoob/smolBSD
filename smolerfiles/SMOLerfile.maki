@@ -68,8 +68,8 @@ RUN mkdir -p /usr/pkg/bin /usr/src && \
 		-e 's/#\[cfg(target_vendor = "apple")\]/#[cfg(any(target_vendor = "apple", target_os = "netbsd"))]/' \
 		-e 's/#\[cfg(not(target_vendor = "apple"))\]/#[cfg(not(any(target_vendor = "apple", target_os = "netbsd")))]/' \
 		maki-ui/src/clock.rs && \
-	cd /usr/src && PATH=/usr/pkg/gnu/bin:${PATH} CARGO_BUILD_JOBS=2 cargo fetch --locked && \
-	cd /usr/src && PATH=/usr/pkg/gnu/bin:${PATH} CARGO_BUILD_JOBS=2 CXXFLAGS="-include limits" cargo build --release --locked && \
+	cd /usr/src && PATH=/usr/pkg/gnu/bin:${PATH} CARGO_BUILD_JOBS=4 cargo fetch --locked && \
+	cd /usr/src && PATH=/usr/pkg/gnu/bin:${PATH} CARGO_BUILD_JOBS=4 CXXFLAGS="-include limits" cargo build --release --locked && \
 	install -o root -g wheel -m 755 target/release/maki /usr/pkg/bin/maki && \
 	strip /usr/pkg/bin/maki && \
 	rm -rf /usr/src /root/.cargo/registry 2>/dev/null
